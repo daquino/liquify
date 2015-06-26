@@ -1,26 +1,24 @@
 package com.refactify.arguments;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class ConversionArgumentsParser {
 
     public ConversionArguments parseArguments(String[] arguments) {
         ConversionArguments conversionArguments = new ConversionArguments();
         try {
-            for (int i = 0; i < arguments.length; i++) {
+            conversionArguments.setSource(arguments[arguments.length - 1]);
+            for (int i = 0; i < arguments.length - 1; i++) {
                 String argument = arguments[i];
-                if (argument.equals("-s") || argument.equals("--source")) {
+                if (argument.equals("-t") || argument.equals("--type")) {
                     String value = arguments[++i];
-                    conversionArguments.setSource(value);
+                    conversionArguments.setConversionType(ConversionArguments.ConversionType.fromString(value));
                 }
-                else if (argument.equals("-d") || argument.equals("--dest")) {
+                else if (argument.equals("-db") || argument.equals("--database")) {
                     String value = arguments[++i];
-                    conversionArguments.setDestination(value);
+                    conversionArguments.setDatabase(value);
                 }
             }
         }
-        catch(ArrayIndexOutOfBoundsException exc) {
+        catch (ArrayIndexOutOfBoundsException exc) {
             System.out.println("Invalid arguments.");
         }
         return conversionArguments;
