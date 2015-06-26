@@ -24,3 +24,8 @@ _Note: When using the sql change log file type, not all bundled change commands 
 database types (i.e. createSequence, addAutoIncrement, etc).  If the tool fails to build when trying to,
 convert to the sql type, it could be because of the desired database type not supporting a bundle change command
 in the source change log file._
+
+##Building
+The project requires JDK 1.6+.  To build the project, simple run the following gradle wrapper command:
+```./gradlew dist```
+This will create a build/distributions directory with a .zip file containing all that is needed to use the tool.
