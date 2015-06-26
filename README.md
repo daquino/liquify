@@ -11,6 +11,7 @@ convert to the sql type, it could be because of the desired database type not su
 in the source change log file._
 
 ### Usage
+#### Bash shell
 ```
 liquify [-options] <source>
   Options:
@@ -23,6 +24,21 @@ liquify [-options] <source>
       
 Example Usage:
   liquify -t sql -db oracle db.changelog.xml (db.changelog.xml => db.changelog.oracle.sql)
+```
+
+#### Java 
+```
+java -jar liquify.jar [-options] <source>
+  Options:
+  
+    Required:
+      -t,--type         Target changelog file type (xml,yaml,json,sql).
+      
+    Conditional:
+      -db,--database    Database type to use when using the sql type (i.e oracle, h2, etc).
+      
+Example Usage:
+  java.jar liquify.jar -t sql -db oracle db.changelog.xml (db.changelog.xml => db.changelog.oracle.sql)
 ```
 
 ### Building
