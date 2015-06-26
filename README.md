@@ -42,6 +42,9 @@ Example Usage:
 ```
 
 ### Building
-The project requires JDK 1.6+.  To build the project, simple run the following gradle wrapper command:
-```./gradlew dist```
-This will create a build/distributions directory with a .zip file containing all that is needed to use the tool.
+The project requires JDK 1.6+ and Gradle as the build tool.  I've included the gradle wrapper command for this project.
+For those who haven't used gradle, it will download gradle to your machine and proxy gradle commands to the version of
+gradle it downloads; so, you don't have to find gradle and install it yourself.  You can just run gradle wrapper command
+```./gradlew dist``` and it will do the rest for you.
+The __dist__ task will create a build/distributions directory with a liquify*.zip file containing all you need to use
+the tool.
