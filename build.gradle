@@ -3,7 +3,7 @@ plugins {
 }
 
 group 'com.refactify'
-version '1.0-SNAPSHOT'
+version '1.0'
 
 apply plugin: 'java'
 
@@ -26,10 +26,21 @@ dependencies {
     compile "org.yaml:snakeyaml:1.13"
 }
 
-task dist(dependsOn: ['clean', 'shadowJar'], type: Copy) {
-    from 'src/main/shell/'
-    from ('build/libs/') {
-        rename 'liquify(.*).jar', 'liquify.jar'
+task prepareDist(dependsOn: 'shadowJar') << {
+    copy {
+        from ('build/libs/') {
+            rename 'liquify(.*).jar', 'liquify.jar'
+        }
+        into 'build/dist/libs'
     }
-    into 'build/dist/'
+    copy {
+        from 'src/main/shell/'
+        into 'build/dist/'
+    }
+}
+
+task dist(dependsOn: ['clean', 'prepareDist'], type: Zip) {
+    from ('build/dist')
+    into (baseName + '-' + version)
+
 }

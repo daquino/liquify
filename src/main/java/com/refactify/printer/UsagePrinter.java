@@ -9,7 +9,7 @@ public class UsagePrinter {
         System.out.println("  Options:");
         System.out.println("    Required:");
         System.out.println("      -t,--type         Target changelog file type(xml,yaml,json,sql).");
-        System.out.println("    Optional:");
+        System.out.println("    Conditional:");
         System.out.println("      -db,--database    Database type to use when using the sql type (i.e oracle, h2, etc).");
         System.out.println("\n" +
                 "Example Usage:\n" +

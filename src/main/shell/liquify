@@ -1,2 +1,2 @@
 #!/bin/sh
-java -jar liquify.jar "$@"
+java -jar libs/liquify.jar "$@"s
