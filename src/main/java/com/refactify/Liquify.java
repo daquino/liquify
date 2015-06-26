@@ -56,7 +56,6 @@ public class Liquify {
             deleteTargetFile(targetFileName);
         }
         catch(IllegalStateException e) {
-            e.printStackTrace();
             System.out.println(String.format("Database generator for type '%s' was not found.",
                     conversionArguments.getDatabase()));
             deleteTargetFile(targetFileName);
