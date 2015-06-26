@@ -38,7 +38,7 @@ java -jar liquify.jar [-options] <source>
       -db,--database    Database type to use when using the sql type (i.e oracle, h2, etc).
       
 Example Usage:
-  java.jar liquify.jar -t sql -db oracle db.changelog.xml (db.changelog.xml => db.changelog.oracle.sql)
+  java -jar liquify.jar -t sql -db oracle db.changelog.xml (db.changelog.xml => db.changelog.oracle.sql)
 ```
 
 ### Building
