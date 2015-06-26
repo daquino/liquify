@@ -12,9 +12,7 @@ in the source change log file._
 
 ### Usage
 ```
-Usage:
-  liquify [-options] <source>
-
+liquify [-options] <source>
   Options:
   
     Required:
@@ -24,7 +22,7 @@ Usage:
       -db,--database    Database type to use when using the sql type (i.e oracle, h2, etc).
       
 Example Usage:
-liquify -t sql -db oracle db.changelog.xml (db.changelog.xml => db.changelog.oracle.sql)
+  liquify -t sql -db oracle db.changelog.xml (db.changelog.xml => db.changelog.oracle.sql)
 ```
 
 ### Building
