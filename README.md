@@ -1,6 +1,6 @@
 # Liquify
 
-Liquify is a command-line tool to convert [Liquibase](http://www.liquibase.org) changelog files
+Liquify is a command-line tool to convert [Liquibase changelog files](http://www.liquibase.org/documentation/databasechangelog.html)
 between the supported file formats(xml,yaml,json,sql).  The project comes with the
 liquify bash shell script as the default way to launch the tool.  However, if you do not
 have BASH on your machine, you can still launch the tool using the java command as well (java -jar liquify.jar [-options] <source>).
