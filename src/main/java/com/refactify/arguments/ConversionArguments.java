@@ -110,4 +110,14 @@ public class ConversionArguments {
                 return null;
         }
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("ConversionArguments{");
+        sb.append("source='").append(source).append('\'');
+        sb.append(", type=").append(type);
+        sb.append(", database='").append(database).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 }

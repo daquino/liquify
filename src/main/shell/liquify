@@ -1,2 +1,3 @@
 #!/bin/sh
-java -jar libs/liquify.jar "$@"s
+SCRIPTPATH=$(dirname $0)
+java -jar $SCRIPTPATH/libs/liquify.jar "$@"
