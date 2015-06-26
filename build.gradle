@@ -1,0 +1,35 @@
+plugins {
+    id 'com.github.johnrengelman.shadow' version '1.2.1'
+}
+
+group 'com.refactify'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.6
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+shadowJar {
+    manifest {
+        attributes 'Main-Class': 'com.refactify.Liquify'
+    }
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    compile "org.liquibase:liquibase-core:3.4.0"
+    compile "org.yaml:snakeyaml:1.13"
+}
+
+task dist(dependsOn: ['clean', 'shadowJar'], type: Copy) {
+    from 'src/main/shell/'
+    from ('build/libs/') {
+        rename 'liquify(.*).jar', 'liquify.jar'
+    }
+    into 'build/dist/'
+}
