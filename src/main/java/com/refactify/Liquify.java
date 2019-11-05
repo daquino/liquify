@@ -14,6 +14,8 @@ import liquibase.resource.FileSystemResourceAccessor;
 import liquibase.resource.ResourceAccessor;
 import liquibase.serializer.ChangeLogSerializer;
 import liquibase.serializer.ChangeLogSerializerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -21,6 +23,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class Liquify {
+    private static final Logger logger = LoggerFactory.getLogger(Liquify.class);
     private final static ConversionArgumentsParser parser = new ConversionArgumentsParser();
     private final static UsagePrinter usagePrinter = new UsagePrinter();
     private final static TargetFileNameBuilder targetFileNameBuilder = new TargetFileNameBuilder();
@@ -48,16 +51,16 @@ public class Liquify {
             serializer.write(changeLog.getChangeSets(), new FileOutputStream(targetFileName));
         }
         catch (LiquibaseException e) {
-            System.out.println("There was a problem parsing the source file.");
+            logger.info("There was a problem parsing the source file.", e);
             deleteTargetFile(targetFileName);
         }
         catch (IOException e) {
-            System.out.println("There was a problem serializing the source file.");
+            logger.info("There was a problem serializing the source file.", e);
             deleteTargetFile(targetFileName);
         }
         catch(IllegalStateException e) {
-            System.out.println(String.format("Database generator for type '%s' was not found.",
-                    conversionArguments.getDatabase()));
+            logger.info("Database generator for type '{}}' was not found.",
+                    conversionArguments.getDatabase());
             deleteTargetFile(targetFileName);
         }
     }
